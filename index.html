@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Document</title>
+<style>
+
+
+
+</style>
+
+</head>
+<body>
+ <div class="container shadow-lg p-3 mb-5 bg-body rounded text-center">   
+    <h1>Buy Item</h1>
+     <button onclick="add()" class="btn btn-outline-success" >Add Item</button>
+     <button onclick="del()" class="btn btn-outline-danger" >Delete</button>
+   
+     <button onclick="cart()" class="btn btn-outline-primary" >Add to cart</button>
+     <center>
+ <div id="di" class="col-md-4   shadow-lg p-3 mb-5 bg-body rounded  ">
+
+ </div>
+</center>
+</div>
+<div class="container shadow-lg p-3 mb-5 bg-body rounded text-center">
+    <center>   
+        <h1>Cart</h1>     
+<div id="car" class="col-md-4 shadow-lg p-3 mb-5 bg-body rounded" >
+
+   
+</div>
+<button class="btn btn-outline-success" onclick="buy()" >Buy</button>
+</center>
+
+</div>
+</div>
+<script>
+
+
+
+// declare array
+
+    var data=[];
+    var itemcart=[];
+var num=prompt("Kitne Items Add karne hai");
+for(var i=0;i<num;i++){
+var items=prompt("Enter Item Name");    
+data.push(items);
+}
+document.getElementById('di').innerHTML=data.join("<br>");   
+
+
+// add item
+function add(){
+var additem=prompt("Item Name");
+data.push(additem);
+document.getElementById('di').innerHTML=data.join("<br>");
+}
+
+
+// del item
+function del(){
+var deletitem=prompt("Enter Delet Item Name");
+var index=data.indexOf(deletitem);
+if(index>-1){
+data.splice(index,1);
+itemcart.splice(index,1);
+alert("Item deleted successfully!");
+document.getElementById('di' ).innerHTML=data.join("<br>");
+document.getElementById('car' ).innerHTML=itemcart.join("<br>");
+}
+else{
+    alert("Data Not Founded");
+}
+}
+
+// add to cart
+function cart(){  
+    var numCart=prompt("Kitne Item Cart me add karne hai")
+        for(var i=0;i<numCart;i++){
+    var cart=prompt("Enter Item Name");
+    if(data.includes(cart)){
+itemcart.push(cart);
+}
+else{
+    alert("Invalid Value")
+}
+}
+document.getElementById('car').innerHTML=itemcart.join("<br>");
+}
+
+// buy item
+function buy(){
+// var by=document.getElementById('car').innerHTML=itemcart.joi
+var by=prompt("Enter items buy karne hai");
+for(var j=0;j<by;j++){
+var nameItm=prompt("Enter Item Name");
+var qtyItm=prompt("Enter Item Qty");
+var pay=prompt("Per item  100PKR ")
+if(pay==="100"){
+var dex=itemcart.indexOf(nameItm);
+if(dex>-1){
+itemcart.splice(dex,1);
+document.getElementById('car').innerHTML=itemcart.join("<br>");
+alert("Item Buy Successfull : quantity of item "  + qtyItm + " Payment  "  +  parseInt(qtyItm*pay)  )
+}
+else{
+    console.log("Invalid Name");
+}
+}
+else{
+    alert("Please Pese dee nahi to phada hujaiga " );
+}
+}
+}
+
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
